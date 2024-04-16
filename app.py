@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    response = make_response('<H1>Cookie test page</H1><p>Use /set-cookie to set persistent test_cookie.</p><p>Use /read-cookie to read test_cookie value.</p>')
+    response = make_response('<H1>Cookie test page</H1><p>Use /set-cookie to set persistent test_cookie.</p><p>Use /read-cookie to read test_cookie value.</p><p>Use /delete-cookie to delete test_cookie.</p>')
     return response
 
 
@@ -35,6 +35,6 @@ def delete_cookie():
     returned_string = '<p>Test_cookie successfully deleted.</p>'
     
     response = make_response(returned_string)
-    response.set_cookie('test_cookie', None , max_age=0)
+    response.set_cookie('test_cookie', '' , max_age=0)
 
     return response
