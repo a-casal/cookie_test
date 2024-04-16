@@ -24,6 +24,17 @@ def set_cookie():
     returned_string = '<p>Test_cookie successfully set.</p>'
     
     response = make_response(returned_string)
-    response.set_cookie('test_cookie', 'true', max_age=30*24*60*60)
+    response.set_cookie('test_cookie', 'Cookie is present', max_age=30*24*60*60)
+
+    return response
+
+
+@app.route('/delete-cookie')
+def delete_cookie():
+    #Delete cookie
+    returned_string = '<p>Test_cookie successfully deleted.</p>'
+    
+    response = make_response(returned_string)
+    response.set_cookie('test_cookie', None , max_age=0)
 
     return response
