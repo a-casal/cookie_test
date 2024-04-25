@@ -24,7 +24,7 @@ def set_cookie():
     returned_string = '<p>Test_cookie successfully set.</p>'
     
     response = make_response(returned_string)
-    response.set_cookie('test_cookie', '*', max_age=30*24*60*60, httponly=False, secure=True, domain='.onrender.com')
+    response.set_cookie('test_cookie', '*', max_age=30*24*60*60, httponly=False, secure=True, domain='onrender.com')
 
     return response
 
