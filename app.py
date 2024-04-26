@@ -3,15 +3,17 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    response = make_response('<H1>Cookie test page</H1><p>Use /set-cookie to set persistent test_cookie.</p><p>Use /read-cookie to read test_cookie value.</p><p>Use /delete-cookie to delete test_cookie.</p>')
+    response = make_response('<H1>Cookie test page</H1><p>Use /set-cookie to set persistent hasPersistentLogin cookie.</p>'
+                             '<p>Use /read-cookie to read hasPersistentLogin value.</p>'
+                             '<p>Use /delete-cookie to delete hasPersistentLogin cookie.</p>')
     return response
 
 
 @app.route('/read-cookie')
 def read_cookie():
     #Read cookie
-    read_cookie = request.cookies.get('test_cookie')
-    returned_string = '<p>The test_cookie value is: {}</p>'.format(read_cookie)
+    read_cookie = request.cookies.get('hasPersistentLogin')
+    returned_string = '<p>The hasPersistentLogin value is: {}</p>'.format(read_cookie)
     
     response = make_response(returned_string)
 
@@ -21,10 +23,10 @@ def read_cookie():
 @app.route('/set-cookie')
 def set_cookie():
     #Set cookie
-    returned_string = '<p>Test_cookie successfully set.</p>'
+    returned_string = '<p>hasPersistentLogin cookie successfully set.</p>'
     
     response = make_response(returned_string)
-    response.set_cookie('test_cookie', '*', max_age=30*24*60*60, httponly=False, secure=False, domain='.onrender.com')
+    response.set_cookie('hasPersistentLogin', '*', max_age=30*24*60*60, httponly=False, secure=True, domain='cookie-test-vegj.onrender.com')
 
     return response
 
@@ -32,9 +34,9 @@ def set_cookie():
 @app.route('/delete-cookie')
 def delete_cookie():
     #Delete cookie
-    returned_string = '<p>Test_cookie successfully deleted.</p>'
+    returned_string = '<p>hasPersistentLogin successfully deleted.</p>'
     
     response = make_response(returned_string)
-    response.set_cookie('test_cookie', '' , max_age=0)
+    response.set_cookie('hasPersistentLogin', '' , max_age=0)
 
     return response
