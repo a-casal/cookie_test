@@ -37,6 +37,6 @@ def delete_cookie():
     returned_string = '<p>hasPersistentLogin successfully deleted.</p>'
     
     response = make_response(returned_string)
-    response.set_cookie('hasPersistentLogin', '' , max_age=0)
+    response.set_cookie('hasPersistentLogin', '' , max_age=0, httponly=False, secure=True, domain='cookie-test-vegj.onrender.com')
 
     return response
