@@ -26,7 +26,7 @@ def set_cookie():
     returned_string = '<p>hasPersistentLogin cookie successfully set.</p>'
     
     response = make_response(returned_string)
-    response.set_cookie('hasPersistentLoginA', '*', max_age=30*24*60*60, httponly=False, secure=True, domain='viaplay.com')
+    response.set_cookie('hasPersistentLoginA', '*', max_age=30*24*60*60, httponly=True, secure=True, domain='cookie-test-vegj.onrender.com')
 
     return response
 
